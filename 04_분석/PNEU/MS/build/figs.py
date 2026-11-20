@@ -1,6 +1,4 @@
 # -*- coding: utf-8 -*-
-# figs_jgms.py — 14호 폐렴 사망 Journals of Gerontology: Medical Sciences 투고용(2026-11-20). 그림 별도 파일 Fig1.tif, 300 dpi 이상 RGB, 폭 ≤170 mm, Arial 8 pt 이상.
-#  시리즈 규칙(11/10·11/12): 패널 문자 대문자·같은 크기·이전(14 pt)의 2배 = 28 pt, 방위표 3배(N 8→24 pt), 지도 컬러, 흑백에서도 구분(선 모양·표지 모양).
 #  그림은 본문에 넣지 않고 TIFF 따로, Arial/Helvetica, 폭 166 mm(두 단), 1200 dpi RGB TIFF LZW. 그림 안 설명문 없음, 한글 없음.
 #  Fig 1 (a) 전 기간 잔차 공간 RR 지도 (b) 조율·연령표준화율 추이 · Fig 2 강건 4개 변수의 모형별 RR · SDC 그림 (a) EHSA (b) 세 창 핫·콜드스팟 횟수
 import os, unicodedata, numpy as np, pandas as pd, geopandas as gpd, matplotlib
@@ -20,7 +18,7 @@ N = load()
 G = gpd.read_file(SHP); G["cd"] = G.sigungu_cd.astype(str); G["sido"] = G.cd.str[:2]; SIDO = G.dissolve("sido")   # 결합은 시군구 코드(cd)로만, 이름 결합 금지
 XL = (G.total_bounds[0], G.total_bounds[2]); YL = (G.total_bounds[1], G.total_bounds[3])
 rd = lambda f: pd.read_csv(os.path.join(RS, f), encoding="utf-8-sig", dtype={"sigungu_cd": str})
-PANEL_LABEL_PT = 28   # 이전 투고본 14 pt의 2배, 모든 패널 같은 크기·대문자
+PANEL_LABEL_PT = 28
 def letter(ax, ch, dx=0.0, dy=1.0):   # 글자 윗변 = 축 위쪽(지도는 왼쪽 위 빈 바다), 그림 밖으로 잘리지 않게 va=top
     ax.text(dx, dy, ch.upper(), transform=ax.transAxes, fontsize=PANEL_LABEL_PT, fontweight="bold", va="top", ha="left", clip_on=False)
 def mapax(ax):

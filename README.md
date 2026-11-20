@@ -2,9 +2,9 @@
 
 Analysis code for the manuscript
 
-> Kim S. *Does late-life pneumonia mortality remain higher outside Korea's capital region once district care and frailty markers are accounted for?* Manuscript under review.
+> Kim S. *Against the global decline, late-life pneumonia mortality in Korea rose by 63% after age standardization* Manuscript under review.
 
-Archived version: Zenodo, https://doi.org/10.5281/zenodo.24393503
+Archived version: Zenodo, https://doi.org/10.5281/zenodo.24408662 (version 1.1.0)
 
 ## Contents
 
@@ -14,7 +14,7 @@ This repository contains code only. The processed district-year data (master tab
 |---|---|
 | `01_스크립트/` | Analysis scripts (below) |
 | `04_분석/PNEU/sets_PNEU_std3.json`, `sets_PNEU_s577.json`, `sets_PNEU_s2.json`, `sets_PNEU_s8.json`, `sets_PNEU_ssx.json`, `config_PNEU_std3.json`, `run_std3_chain_fix.sh` | Covariates with expected directions, forced controls, comparison outcomes and model settings (principal model `std3`; sensitivity versions with the queen contiguity graph, without the share aged 80 or older, with ten-group expected deaths, and with sex-and-age standardized expected deaths) |
-| `04_분석/PNEU/MS/` | Scripts that read the result tables and write every number, table and figure in the manuscript and supplementary material, including `content_jgms.py`, which generates the Methods and Results text (the draft source of the Introduction and Discussion is not included) |
+| `04_분석/PNEU/MS/` | Scripts that read the result tables and write every number, table and figure in the manuscript and supplementary material, including `content.py`, which generates the Methods and Results text (the draft source of the Introduction and Discussion is not included) |
 
 Folder and some column names are in Korean because the source tables are Korean; each script has a header comment describing its inputs and outputs.
 
@@ -41,13 +41,17 @@ Run from the repository root (set `ST_DATA_ROOT` and `ST_FBDZIP_CORRECTED` to th
 | 5 | `85_window_maps.R`, `86_yearly_maps_ehsa.py`, `86b_ehsa_modified_mk.py`, `87_window_grid.py` | Maps and emerging hot spot analysis |
 | 6 | `88g_sens_prep.py PNEU std3 INFECT,GCA`, `88g_sens_suite.R` (`GROUP=1..6`), `88h_ppc_varpart.R`, `88k_struct_kh.R` (nb, struct, kh, review) with `kh_constraints.R`, `88z_pneu_coding.R`, `89g_sens_combine.py` | Sensitivity analyses, comparison outcomes, Knorr-Held models, death-certification and access checks, review outputs |
 | 6b | `88r_reverse_check.R` (`REV`, `AXIS` environment variables) | Post hoc checks of the association opposite to the expected direction |
-| 7 | `04_분석/PNEU/MS/build/` (`run_all.sh`: `build_refs_jgms.py`, `figs_jgms.py`, `build_jgms.py`, `esm_jgms.py`, `post_esm.py`, `cover_jgms.py`, `check_jgms.py`) | Manuscript, Supplement, figures and checks |
+| 7 | `04_분석/PNEU/MS/build/` (`run_all.sh`: `figs.py`, `build_ms.py`, `esm.py`, `post_esm.py`; `build_refs.py` refreshes the reference cache) | Manuscript (APA author-year references), Supplemental Material and figures |
 
 The boundary file is found at `data/boundary/final.shp` by default; set `ST_SHP` to use another path.
 
 ## Software
 
 R 4.6.0 with R-INLA 25.10.19, spdep and sf; Python 3.9 with pandas, geopandas, numpy, scipy, matplotlib and python-docx.
+
+## Checks
+
+Expected deaths and the model offset contain no added constants (no `E + 1`, `log(E + c)` or lower bounds on `E`); the only constant is a continuity correction of 0.5 on observed deaths in the descriptive yearly Moran's I of log ratios (`01_스크립트/81_fit_inla.R`), which does not enter any model.
 
 ## License
 

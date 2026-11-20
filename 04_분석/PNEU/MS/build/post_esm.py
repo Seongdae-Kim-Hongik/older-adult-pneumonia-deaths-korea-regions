@@ -1,4 +1,4 @@
-# post_esm.py — JGMS Supplement 서식(2026-11-20): 본문 Times New Roman 10pt 단일 간격, 큰 제목 12pt 굵게, 표 안 글자 Arial(10pt 이하 유지), 표 제목 Arial 12pt 굵게.
+# post_esm.py — Supplement 서식: 본문 Times New Roman 10pt 단일 간격, 큰 제목 12pt 굵게, 표 안 글자 Arial(10pt 이하 유지), 표 제목 Arial 12pt 굵게.
 import sys, re
 from docx import Document
 from docx.shared import Pt

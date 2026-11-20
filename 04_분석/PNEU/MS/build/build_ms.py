@@ -1,22 +1,20 @@
-# build_jgms.py — 14호 폐렴 사망 The Journals of Gerontology, Series A: Medical Sciences(OUP·GSA) Research Article 원고 조립(2026-11-20).
-#  규정 요점: 논문폴더 114_노인폐렴사망지리_JGMS/00_저널가이드/JGMS_가이드_요점_261120.md — 제목면(제목·저자·학위·소속·교신 이메일·단어 수·자료 요소 수) → 구조 초록 Background/Methods/Results/Conclusions ≤250 + 키워드 3-5(제목에 없는 말)
-#   → Introduction → Method → Results → Discussion → Funding → Conflict of Interest → Acknowledgments → Author Contributions → Data Availability → References(AMA, 괄호 번호, DOI) → 표(각 쪽, Note.) → 그림 캡션+Alt text. 제목면+초록+본문 ≤5200, 자료 요소 ≤5, 참고문헌 ≤50. 단일 익명. 그림 별도 TIFF 300 dpi 이상. 보충 = Supplement 단일 PDF. 미국식 철자. AI 사용은 Method.
-#   (표 각 쪽, 캡션 'Figure n.' + Alt text)
+#  제목면 별도(running head), 감사 = 별도 AUTHOR'S NOTE, 초록 쪽·본문 첫 쪽에 저자 없는 제목, 구조 초록 100-150(Objectives/Methods/Results/Discussion), 키워드 3-5, APA 7 저자-연도.
+#  산출: Manuscript_anonymized.docx · Title_Page.docx · Author_Note.docx
 import os, re, json, subprocess
 from docx.oxml.ns import qn
 from docx.oxml import OxmlElement
 from docx.shared import Pt, Cm
 from jkms_engine import JKMS
-import content_jgms as C
+import content as C
 HERE = os.path.dirname(os.path.abspath(__file__)); MS = os.path.dirname(HERE); OUT = os.path.join(MS, "out"); os.makedirs(OUT, exist_ok=True)
-N = C.N; REFS = json.load(open(os.path.join(HERE, "refs_jgms.json"), encoding="utf-8"))
-DRAFT = os.path.join(MS, "draft", "01_manuscript_jgms.md")
-PAPER = os.path.expandvars("$ST_DATA_ROOT") + "/G.Downloads/논문_마스터자료/114_노인폐렴사망지리_JGMS"
+N = C.N; REFS = json.load(open(os.path.join(HERE, "refs.json"), encoding="utf-8"))
+DRAFT = os.path.join(MS, "draft", "01_manuscript.md")
+PAPER = os.path.expandvars("$ST_DATA_ROOT") + "/G.Downloads/논문_마스터자료/PAPER"
 _zf = os.path.join(PAPER, "06_GitHub_Zenodo", "zenodo_doi.txt")   # 부모가 Zenodo 게시 후 이 한 줄(10.5281/zenodo.NNNNNNNN)을 고치고 run_all.sh 재실행
 ZENODO = open(_zf).read().strip() if os.path.exists(_zf) else "10.5281/zenodo.PENDING"
 REPO = "older-adult-pneumonia-deaths-korea-regions"; GITHUB = f"https://github.com/Seongdae-Kim-Hongik/{REPO}"
-OLD_REPOS = (); assert REPO not in OLD_REPOS
-TITLE = C.TITLE; ORCID = "0000-0002-1525-0091"; JOURNAL = "The Journals of Gerontology, Series A: Medical Sciences"
+assert REPO
+TITLE = C.TITLE; ORCID = "0000-0002-1525-0091"; JOURNAL = ""
 AFFIL = "Department of Biohealth Convergence Open Sharing System, Hongik University, Seoul, Republic of Korea"
 ADDRESS = "Department of Biohealth Convergence Open Sharing System, Hongik University, 94 Wausan-ro, Mapo-gu, Seoul 04066, Republic of Korea"
 FUNDING = "This research did not receive any specific grant from funding agencies in the public, commercial, or not-for-profit sectors."
@@ -33,7 +31,7 @@ M_ = N["main"]; _o = M_[C.OLD]
 TOK = {"cases_total": f"{N['cases_total']:,}", "share75_2024": f"{100*N['share75_2024']:.1f}", "asr_2011": f"{N['asr_2011']:.1f}", "asr_2024": f"{N['asr_2024']:.1f}",
        "asr_peak_year": str(max(N["asr"], key=N["asr"].get)), "asr_peak": f"{max(N['asr'].values()):.1f}", "asr_rise_pct": f"{100*(N['asr_ratio']-1):.0f}", "n_hot": str(N["n_hot"]), "hot_county": str(N["type_class"]["hotspot"]["county"]),
        "old_ci": f"{_o['IRR']:.3f}; 95% credible interval {_o['lo']:.3f} to {_o['hi']:.3f}"}
-TOK["n_hot_noncap"] = str(N["n_hot"] - N["hot_capital"]); assert N["hot_capital"] <= 0.1 * N["n_hot"], "핫스팟 대부분이 비수도권일 때만 'outside the capital region' 문장"
+TOK["n_hot_noncap"] = str(N["n_hot"] - N["hot_capital"]); assert TOK["asr_rise_pct"] == "63" and "63%" in TITLE, "제목의 63% = 결과"; assert N["hot_capital"] <= 0.1 * N["n_hot"], "핫스팟 대부분이 비수도권일 때만 'outside the capital region' 문장"
 def read_draft():
     md = open(DRAFT, encoding="utf-8").read(); md = re.sub(r"<!--.*?-->", "", md, flags=re.S)
     md = re.sub(r"«(\w+)»", lambda m: TOK[m.group(1)], md); S = {}; cur = None
@@ -44,7 +42,7 @@ def read_draft():
     return {k: [p.strip() for p in "\n".join(v).split("\n\n") if p.strip()] for k, v in S.items()}
 def pandoc_cites(t): return re.sub(r"\s*\[(@[^\]]+)\]", lambda m: " {{" + ",".join(k.strip().lstrip("@") for k in m.group(1).split(";")) + "}}", t)
 def all_keys():
-    src = open(os.path.join(HERE, "content_jgms.py"), encoding="utf-8").read() + open(DRAFT, encoding="utf-8").read()
+    src = open(os.path.join(HERE, "content.py"), encoding="utf-8").read() + open(DRAFT, encoding="utf-8").read()
     src = re.sub(r"<!--.*?-->", "", src, flags=re.S); src = re.sub(r"(?m)^\s*#.*$", "", src)
     return sorted(k for k in {k.strip().lstrip("@") for g in re.findall(r"\[(@[^\]]+)\]", src) for k in g.split(";")} if re.fullmatch(r"(web:)?[a-z][a-z0-9]*", k))
 KEYS = all_keys(); assert len(KEYS) <= 50, len(KEYS)
@@ -64,19 +62,51 @@ def sent(t):   # 참고문헌 제목 문장형(첫 단어·고유명사·약어 
     for ph in ("National Health Insurance Service", "Community Health Survey", "Global Burden of Disease Study", "Korean National Hospital Discharge In-depth Injury Survey"): t2 = re.sub(ph, ph, t2, flags=re.I)
     return t2.replace("(A JAGES", "(a JAGES").replace("Long-Term Care", "long-term care")
 PAGES_FIX = {"kim2026living": "1366"}   # BMC Geriatr 논문번호(Crossref article-number)
-JFIX = {"The Lancet. Infectious diseases": "Lancet Infect Dis", "Age and Ageing": "Age Ageing"}   # Index Medicus 약어
-def vauthor(a): return a.strip().rstrip(".")
-def ref(k):   # AMA 11판: 저자 6명 이하 전원, 7명 이상 3명 + et al. Title. J Abbr. Year;Vol:pages. doi:...
+JFULL = json.load(open(os.path.join(HERE, "journal_full.json"), encoding="utf-8"))
+JOVR = {"Respiration; international review of thoracic diseases": "Respiration", "PloS one": "PLOS ONE", "The Lancet. Infectious diseases": "The Lancet Infectious Diseases",
+        "Lancet (London, England)": "The Lancet", "BMJ open": "BMJ Open", "JMA journal": "JMA Journal", "GeroScience": "GeroScience", "Cadernos de saude publica": "Cadernos de Saúde Pública",
+        "Geriatrics & gerontology international": "Geriatrics & Gerontology International", "Diabetes & metabolism journal": "Diabetes & Metabolism Journal",
+        "The New England journal of medicine": "The New England Journal of Medicine", "BMC public health": "BMC Public Health", "BMC pulmonary medicine": "BMC Pulmonary Medicine", "BMC geriatrics": "BMC Geriatrics"}
+SMALL = {"of", "and", "in", "the", "for", "on", "&", "de", "a", "an", "to"}
+def jtitle(k):
+    j = JOVR.get(JFULL.get(k, ""), JFULL.get(k, REFS[k]["journal"]))
+    if j in JOVR.values() or j.isupper(): return j
+    w = j.split(); return " ".join(x if (x.isupper() or (i and x.lower() in SMALL)) else (x[:1].upper() + x[1:]) for i, x in enumerate(w)).replace(" Of ", " of ")
+def is_group(a): return not re.search(r"\s[A-Z]{1,3}$", a.strip())
+def surname(a): a = a.strip(); return a if is_group(a) else a.rsplit(" ", 1)[0]
+def apa_name(a):
+    a = a.strip().rstrip(".")
+    if is_group(a): return a
+    sn, ini = a.rsplit(" ", 1); return f"{sn}, " + " ".join(f"{c}." for c in ini)
+def _au(k): r = REFS[k]; return [r["authors"]] if isinstance(r["authors"], str) else r["authors"]
+def _base(k):
+    au = _au(k); n = len(au); a0 = surname(au[0])
+    lab = a0 if n == 1 else (f"{a0} & {surname(au[1])}" if n == 2 else f"{a0} et al.")
+    return lab, str(REFS[k]["year"])
+_LB = {}
+for _k in REFS: _LB.setdefault(_base(_k), []).append(_k)
+SUF = {}
+for (_l, _y), _ks in _LB.items():
+    if len(_ks) > 1:
+        for _i, _k in enumerate(sorted(_ks, key=lambda x: REFS[x]["title"].lower())): SUF[_k] = "abcdefgh"[_i]
+def ykey(k): return str(REFS[k]["year"]) + SUF.get(k, "")
+def aylabel(k):
+    lab, y = _base(k); return ((lab.lower(), ykey(k)), f"{lab}, {ykey(k)}")
+def sortkey(k): au = _au(k); return (re.sub(r"[^a-z ]", "", surname(au[0]).lower().replace("ö", "o").replace("é", "e")), [surname(a).lower() for a in au[1:]], ykey(k))
+def ref(k):   # APA 7: 저자 20명까지 전부(초과 19명 … 마지막), (연도). 제목 문장형. 저널 이탤릭, 권(호), 쪽. https://doi.org/
     r = REFS[k]
-    if r["type"] == "web": return f"{r['authors']}. {r['title'].rstrip('.')}. Published {r['year']}. Accessed {r['accessed']}. {r['url']}"
-    au = [vauthor(a) for a in r["authors"]]; a = ", ".join(au) if len(au) <= 6 else ", ".join(au[:3]) + ", et al"
-    t = sent(r["title"].rstrip(".")); t = t + ("" if t.endswith(("?", "!")) else ".")
-    j = JFIX.get(r["journal"], r["journal"]).replace(".", "")
-    s_ = f"{a}. {t} {j}. {r['year']}"
-    pg = str(r.get("pages") or PAGES_FIX.get(k, ""))
-    if r.get("vol"): s_ += f";{r['vol']}" + (f":{pg}" if pg else "")
-    elif pg: s_ += f":{pg}"
-    return s_ + "." + (f" doi:{r['doi']}" if r.get("doi") else "")
+    if r["type"] == "web": return f"{r['authors']}. ({ykey(k)}). <i>{r['title'].rstrip('.')}</i>. {r['url']}"
+    au = [apa_name(a) for a in _au(k)]
+    if len(au) == 1: a = au[0]
+    elif len(au) <= 20: a = ", ".join(au[:-1]) + ", & " + au[-1]
+    else: a = ", ".join(au[:19]) + ", . . . " + au[-1]
+    if not a.endswith("."): a += "."
+    t = sent(r["title"].rstrip(".")); t = re.sub(r"([:?]) ([a-z])", lambda m: m.group(1) + " " + m.group(2).upper(), t); t = t + ("" if t.endswith(("?", "!")) else ".")
+    pg = re.sub(r"\s*[-–]+\s*", "\u2013", str(r.get("pages") or PAGES_FIX.get(k, "")))
+    s_ = f"{a} ({ykey(k)}). {t} <i>{jtitle(k)}</i>"
+    if r.get("vol"): s_ += f", <i>{r['vol']}</i>" + (f"({r['issue']})" if r.get("issue") else "")
+    if pg: s_ += f", {pg}"
+    return s_ + "." + (f" https://doi.org/{r['doi']}" if r.get("doi") else "")
 
 class TX(JKMS):
     raw = False; table_bold = False   # 데이터 칸 무볼드(시리즈 규칙) — 헤더·카테고리 행 볼드는 booktabs가 처리
@@ -85,6 +115,7 @@ class TX(JKMS):
         return super()._emit(p, text, sz, bold, italic)
     def head(self, text, level=1):
         return super().head(text, level)
+    def aylabel(self, k): return aylabel(k)
 
 TAB1_COV = [("pop80_share", "Population aged 80 years or older, %"), ("urban_population_share", "Urban population share, %"), ("physicians_per_1000", "Physicians per 1,000"),
             ("influenza_vaccination_rate", "Influenza vaccination, %"), ("current_smoking_rate", "Current smoking, %"), ("walking_practice_rate", "Walking practice, %"),
@@ -141,36 +172,32 @@ assert all(c.endswith(".") for c in FIGCAP.values())
 ALT = {
  1: "Two panels. Panel A is a choropleth map of Korean districts colored by the residual spatial mortality ratio, with outlined hot-spot districts mostly outside the capital region and cold-spot districts concentrated in Seoul and Gyeonggi. Panel B is a line chart of national crude and age-standardized pneumonia death rates from 2011 to 2024, both rising, with the age-standardized rate peaking in 2018.",
  2: "Forest plot of mortality rate ratios with 95% credible intervals for four district characteristics (older adults living alone, long-term care hospitals, high-risk drinking, and influenza vaccination) across six model specifications; intervals in the principal model lie above 1, and intervals in the models allowing district-specific trends include 1.",
-}   # JGMS: 캡션 바로 아래 'Alt text:' 줄
-def foot_row(J, text, sz=9, ls=15):
+}
+def foot_row(J, text, sz=9, ls=15):   # 표 각주 = 표 바로 아래 문단(check_docx_gate 마지막 가로줄)
     from docx.enum.text import WD_LINE_SPACING
-    t = J.doc.tables[-1]; r = t.add_row(); m = r.cells[0].merge(r.cells[-1]); m.text = ""; p = m.paragraphs[0]
+    p = J.doc.add_paragraph()
     p.paragraph_format.line_spacing_rule = WD_LINE_SPACING.EXACTLY; p.paragraph_format.line_spacing = Pt(ls); p.paragraph_format.space_before = Pt(4)
     c = J.counting; J.counting = False; J._emit(p, text, sz); J.counting = c
 def put_table(J, t, fs=9):
     c = J.counting; J.counting = False; J.table_fit(t[0], t[1], t[2], "", fs_max=fs, title_bold=True); foot_row(J, t[3], 8); J.counting = c
 
 KEYWORDS = C.KEYWORDS; assert 3 <= len(KEYWORDS.split(";")) <= 5
-ABS_HEADS = ("Background", "Methods", "Results", "Conclusions")
+ABS_HEADS = ("Objectives", "Methods", "Results", "Discussion")
 def _heads(D, sec, heads):
     out = []
     for p in D[sec]:
         m = re.match(r"^(\w+):\s*(.*)$", p, re.S); assert m and m.group(1) in heads, p[:40]; out.append((m.group(1), m.group(2)))
     assert [h for h, _ in out] == list(heads); return out
 def abstract_paras(D): return _heads(D, "Abstract", ABS_HEADS)
-def abs_words(D): return sum(len(t.split()) + 1 for _, t in abstract_paras(D))   # 소제목 포함
-def build(bw=0, tw=0):   # 단일 익명: 제목면 포함 원고 1개
-    D = read_draft(); J = TX(cite="paren")
+def abs_words(D): return sum(len(t.split()) for _, t in abstract_paras(D))
+RUNNING = "Late-life pneumonia mortality in Korea"
+def build():   # 이중 익명 원고: 저자·소속·감사·연구비·자료 저장소 없음
+    D = read_draft(); J = TX(cite="ay")
     J.para(f"<b>{TITLE}</b>")
-    J.para("Seongdae Kim, PhD", before=12)
-    J.para(AFFIL, before=6)
-    J.para(f"<b>Address correspondence to:</b> Seongdae Kim, PhD, {ADDRESS}. E-mail: kimsd@hongik.ac.kr. ORCID: {ORCID}", before=12)
-    J.para(f"<b>Word count:</b> {tw:,} (title page, abstract, and main text); main text {bw:,}", before=6)
-    J.para("<b>Number of data elements:</b> 4 (2 tables and 2 figures)", before=6)
-    J.page_break(); J.head("Abstract", 1)
+    J.head("Abstract", 1)
     for h, t in abstract_paras(D): J.para(f"<b>{h}:</b> {t}")
     J.para(f"<b>Keywords:</b> {KEYWORDS}", before=6)
-    J.page_break(); J.counting = True
+    J.page_break(); J.para(f"<b>{TITLE}</b>"); J.counting = True
     J.head("Introduction", 1)
     for p in D["Introduction"]: J.para(pandoc_cites(p), indent=True)
     J.head("Method", 1)
@@ -182,31 +209,55 @@ def build(bw=0, tw=0):   # 단일 익명: 제목면 포함 원고 1개
         if p.startswith("### "): J.head(p[4:].strip(), 2); continue
         J.para(pandoc_cites(p), indent=True)
     J.counting = False
-    for h, t in (("Funding", FUNDING), ("Conflict of Interest", COMPETING), ("Acknowledgments", ACK), ("Author Contributions", CONTRIB), ("Data Availability", data_statement())):
-        J.head(h, 1); J.para(t)
     assert sorted(J.cites) == KEYS, (set(J.cites) ^ set(KEYS))
     J.page_break(); J.head("References", 1); J.raw = True; rl = []
-    for i, k in enumerate(J.cites, 1): s_ = f"{i}. " + ref(k); rl.append(s_); J.para(s_)
+    for k in sorted(J.cites, key=sortkey): s_ = ref(k); rl.append(s_); J.para(s_, hanging=True) if "hanging" in J.para.__code__.co_varnames else J.para(s_)
     J.raw = False
     for t in (table1(), table2()): J.page_break(); put_table(J, t)   # 표는 참고문헌 뒤, 각 쪽
     J.page_break(); J.head("Figure Captions", 1)
-    for k in sorted(FIGCAP): J.para(f"<b>Figure {k}.</b> {FIGCAP[k]}", before=6); J.para(f"Alt text: {ALT[k]}")
+    for k in sorted(FIGCAP): J.para(f"<b>Figure {k}.</b> {FIGCAP[k]}", before=6)
     return J, rl, D
 
+def title_page(bw, aw, npages):
+    T = TX(cite="ay")
+    T.para(f"<b>{TITLE}</b>")
+    T.para(f"<b>Running head:</b> {RUNNING}", before=6)
+    T.para("Seongdae Kim, PhD", before=12); T.para(AFFIL, before=4)
+    T.para(f"<b>Corresponding author:</b> Seongdae Kim, PhD, {ADDRESS}. E-mail: kimsd@hongik.ac.kr. Telephone: +82-2-320-1114. ORCID: {ORCID}", before=12)
+    T.para(f"<b>Word count:</b> abstract {aw} words; main text {bw:,} words. <b>Tables:</b> 2. <b>Figures:</b> 2. Manuscript length: {npages} double-spaced pages including references, tables, and figure captions, excluding the title page and abstract.", before=6)
+    for h, t in (("Funding", FUNDING), ("Declaration of conflicting interests", "The author declared no potential conflicts of interest with respect to the research, authorship, and/or publication of this article."),
+                 ("Ethical approval and informed consent", ETHICS + " " + CONSENT), ("Data availability", data_statement()),
+                 ("Author contributions", CONTRIB),
+                 ("Use of artificial intelligence", "Claude (Anthropic) and ChatGPT (OpenAI) were used only for translation and English-language editing; the author reviewed all output and takes full responsibility for the content.")):
+        T.head(h, 2); T.para(t)
+    return T
+def author_note():
+    A = TX(cite="ay"); A.para("<b>AUTHOR'S NOTE</b>"); A.para(f"<b>{TITLE}</b>", before=6)
+    A.para("Acknowledgments: None. The study received no specific funding.", before=6); return A
+
+def double_space(path, tables_single=True):
+    from docx import Document
+    from docx.enum.text import WD_LINE_SPACING
+    d = Document(path)
+    for p in d.paragraphs:
+        p.paragraph_format.line_spacing_rule = WD_LINE_SPACING.DOUBLE
+    d.save(path)
 def docx_bw(path):
     from docx import Document
     t = "\n".join(x.text for x in Document(path).paragraphs)
-    return len(t[t.find("\nIntroduction\n"):t.find("\nFunding\n")].split())
-def docx_tw(path):   # JGMS 단어 수 = 제목면 + 초록 + 본문
-    from docx import Document
-    t = "\n".join(x.text for x in Document(path).paragraphs)
-    return len(t[:t.find("\nFunding\n")].split())
+    a = t.find("\nIntroduction\n"); return len(t[a:t.find("\nReferences\n")].split())
+def pdf_pages(path):
+    pdf = path.replace(".docx", ".pdf")
+    subprocess.run(["/opt/homebrew/bin/soffice", "--headless", "-env:UserInstallation=file:///tmp/lo_pneu_ms", "--convert-to", "pdf", "--outdir", os.path.dirname(path), path], check=True, capture_output=True)
+    pg = subprocess.run(["pdftotext", pdf, "-"], capture_output=True, text=True).stdout.split("\f")
+    k = next(i for i, x in enumerate(pg) if "Introduction" in x)   # 초록 쪽 제외
+    return len([x for x in pg[k:] if x.strip()])
 def fix_orphans(path, heads, max_iter=8):
     from docx import Document
     fixed = set()
     for _ in range(max_iter):
         pdf = path.replace(".docx", ".pdf")
-        subprocess.run(["/opt/homebrew/bin/soffice", "--headless", "-env:UserInstallation=file:///tmp/lo_pneu_jgms", "--convert-to", "pdf", "--outdir", os.path.dirname(path), path], check=True, capture_output=True)
+        subprocess.run(["/opt/homebrew/bin/soffice", "--headless", "-env:UserInstallation=file:///tmp/lo_pneu_ms", "--convert-to", "pdf", "--outdir", os.path.dirname(path), path], check=True, capture_output=True)
         pages = subprocess.run(["pdftotext", "-layout", pdf, "-"], capture_output=True, text=True).stdout.split("\f"); orphan = None
         for pg in pages:
             ls = [re.sub(r"^\d+\s+", "", l.strip()) for l in pg.split("\n") if l.strip()]; ls = [l for l in ls if not re.fullmatch(r"\d+", l)]
@@ -223,16 +274,13 @@ def fix_orphans(path, heads, max_iter=8):
         d.save(path); print("orphan fixed:", orphan)
 
 if __name__ == "__main__":
-    p = os.path.join(OUT, "Manuscript.docx")
-    J, rl, D = build(); J.doc_title = "Manuscript"; J.save(p); bw = docx_bw(p); tw = docx_tw(p) + 6
-    for _ in range(3):
-        J, rl, D = build(bw, tw); J.doc_title = "Manuscript"; J.save(p)
-        if docx_tw(p) == tw: break
-        tw = docx_tw(p)
-    assert docx_bw(p) == bw and docx_tw(p) == tw, (bw, tw, docx_tw(p))
-    assert tw <= 5200, tw
-    heads = {"Abstract", "Introduction", "Method", "Results", "Discussion", "References", "Figure Captions", "Funding", "Conflict of Interest", "Acknowledgments", "Author Contributions", "Data Availability"} | {h for h, _ in C.METHODS + C.RESULTS} | {x[4:].strip() for x in D["Discussion"] if x.startswith("### ")}
+    p = os.path.join(OUT, "Manuscript_anonymized.docx")
+    J, rl, D = build(); J.doc_title = "Manuscript"; J.save(p); double_space(p)
+    heads = {"Abstract", "Introduction", "Method", "Results", "Discussion", "References", "Figure Captions"} | {h for h, _ in C.METHODS + C.RESULTS} | {x[4:].strip() for x in D["Discussion"] if x.startswith("### ")}
     fix_orphans(p, heads)
-    aw = abs_words(D)
-    open(os.path.join(OUT, "wordcount.txt"), "w").write(f"body_words={bw}\ntotal_words={tw}\nabstract_words={aw}\nrefs={len(KEYS)}\ntables=2\nfigures=2\ntitle_words={len(TITLE.split())}\n")
-    print(f"body {bw} | total {tw} | abstract {aw} | refs {len(KEYS)} | title words {len(TITLE.split())}")
+    bw = docx_bw(p); aw = abs_words(D); npg = pdf_pages(p)
+    assert 100 <= aw <= 150, aw
+    T = title_page(bw, aw, npg); T.doc_title = "Title Page"; T.save(os.path.join(OUT, "Title_Page.docx"))
+    A = author_note(); A.doc_title = "Author's Note"; A.save(os.path.join(OUT, "Author_Note.docx"))
+    open(os.path.join(OUT, "wordcount.txt"), "w").write(f"body_words={bw}\nabstract_words={aw}\nrefs={len(KEYS)}\ntables=2\nfigures=2\npages_main={npg}\ntitle_words={len(TITLE.split())}\n")
+    print(f"body {bw} | abstract {aw} | refs {len(KEYS)} | pages(본문~캡션) {npg} | title words {len(TITLE.split())}")

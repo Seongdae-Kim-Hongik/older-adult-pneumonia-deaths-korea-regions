@@ -60,7 +60,7 @@ class JKMS:
                     j=i
                     while j+1<len(nums) and nums[j+1]==nums[j]+1: j+=1
                     parts.append(f"{nums[i]}-{nums[j]}" if j-i>=2 else ("," if self.cite=="sup" else ", ").join(str(n) for n in nums[i:j+1])); i=j+1
-                if self.cite=="paren":   # 2026-11-20 JGMS(AMA): 괄호 안 아라비아 숫자, 위첨자 아님
+                if self.cite=="paren":
                     r=p.add_run("("+", ".join(parts)+")"); r.font.size=Pt(sz); r.font.name=FONT
                     if self.counting: self.body_words+=1
                     continue

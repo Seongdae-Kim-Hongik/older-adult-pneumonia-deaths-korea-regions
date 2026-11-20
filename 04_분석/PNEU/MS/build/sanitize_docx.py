@@ -2,7 +2,7 @@
 #  customXml/item1.xml·itemProps, docProps/thumbnail.jpeg, 모든 word/*.xml의 keepNext·keepLines·pageBreakBefore. creator·lastModifiedBy = Seongdae Kim(익명 심사 파일 Manuscript·Supporting_Information은 빈 값). 파일마다 수정 시각을 몇 분씩 다르게.
 import os, re, sys, zipfile, shutil, subprocess, datetime, random
 def sanitize(path, minutes_ago=0, anon=None):
-    if anon is None: anon = bool(re.search(r"(Manuscript|Supporting_Information|Supplementary_Material|STROBE|Highlights)", os.path.basename(path)))   # 익명 심사 파일은 저자 메타 비움(06 §5-G ⑥)
+    if anon is None: anon = bool(re.search(r"(Manuscript|Supporting_Information|Supplementary_Material|Supplement|STROBE|Highlights)", os.path.basename(path)))   # 익명 심사 파일은 저자 메타 비움(06 §5-G ⑥)
     who = "" if anon else "Seongdae Kim"
     pdf = path[:-5] + ".pdf"
     pages = int(re.search(r"Pages:\s+(\d+)", subprocess.run(["pdfinfo", pdf], capture_output=True, text=True).stdout).group(1)) if os.path.exists(pdf) else 1

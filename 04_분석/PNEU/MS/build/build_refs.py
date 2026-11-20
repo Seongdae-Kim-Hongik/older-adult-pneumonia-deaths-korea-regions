@@ -1,4 +1,4 @@
-# build_refs_jgms.py — 14호 폐렴 사망 참고문헌 메타데이터 캐시(refs_jgms.json). manifest = ALL_refs.csv(문헌 에이전트) → Crossref·PubMed 메타.
+# build_refs.py — 14호 폐렴 사망 참고문헌 메타데이터 캐시(refs.json). manifest = ALL_refs.csv(문헌 에이전트) → Crossref·PubMed 메타.
 #  키 = 원고 원천(draft md + content_strk.py)의 [@key]. manifest(ALL_refs.csv) PMID → PubMed esummary, 없으면 DOI → Crossref. 웹 문헌은 WEB 사전.
 #  저자 성 = PubMed 이름에서 이니셜 제거.
 import os, re, json, time, urllib.request, urllib.parse, glob
@@ -6,7 +6,7 @@ import pandas as pd
 HERE = os.path.dirname(os.path.abspath(__file__)); MS = os.path.dirname(HERE)
 man = pd.concat([pd.read_csv(os.path.join(MS, "refs", "manifest", f), dtype=str) for f in ("ALL_refs.csv", "EXTRA_refs_build.csv")]).fillna("").drop_duplicates("key")
 man["pmid"] = man.pmid.str.replace(r"\.0$", "", regex=True); M = man.set_index("key")
-src = open(os.path.join(HERE, "content_jgms.py"), encoding="utf-8").read() + "".join(open(f, encoding="utf-8").read() for f in glob.glob(os.path.join(MS, "draft", "*.md")))
+src = open(os.path.join(HERE, "content.py"), encoding="utf-8").read() + "".join(open(f, encoding="utf-8").read() for f in glob.glob(os.path.join(MS, "draft", "*.md")))
 src = re.sub(r"<!--.*?-->", "", src, flags=re.S); src = re.sub(r"(?m)^\s*#.*$", "", src)
 keys = sorted({k.strip().lstrip("@") for g in re.findall(r"\[(@[^\]]+)\]", src) for k in g.split(";")})
 keys = [k for k in keys if re.fullmatch(r"(web:)?[a-z][a-z0-9]*", k)]
@@ -97,7 +97,7 @@ AUTHOR_FIX = {"Cheol Seong S": "Seong SC", "Heon Park J": "Park JH", "Hyon Bang 
 for _k, _v in out.items():
     if isinstance(_v.get("authors"), list): _v["authors"] = [AUTHOR_FIX.get(a, a) for a in _v["authors"]]
 assert not any("Cheol Seong" in a for v in out.values() if isinstance(v.get("authors"), list) for a in v["authors"])
-json.dump(out, open(os.path.join(HERE, "refs_jgms.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+json.dump(out, open(os.path.join(HERE, "refs.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
 import re as _re
 for _k, _v in out.items():   # 9호부터: 한국인 이름 뒤집힘 검사(두 음절 이름 + 한 글자 이니셜)
     if isinstance(_v.get("authors"), list): assert not [a for a in _v["authors"][:3] if a not in ("Tchetgen Tchetgen E", "Di Napoli M", "De Villiers A") and _re.fullmatch(r"[A-Z][a-z]+ [A-Z][a-z]+ [A-Z]", a)], (_k, _v["authors"])

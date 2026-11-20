@@ -1,9 +1,5 @@
-# content_jgms.py — 14호 폐렴 사망(PNEU, J12-J18) Journals of Gerontology: Medical Sciences 원고의 Methods·Results 문장(수치는 numbers_pneu에서만, 2026-11-20).
-#  JGMS 규칙: 구조 초록 Background/Methods/Results/Conclusions ≤250, 키워드 3-5(제목에 없는 말), 제목면+초록+본문 ≤5200, 자료 요소 ≤5, 참고문헌 ≤50, AMA 괄호 번호 인용, 보충 = Supplement 단일 PDF(eMethods·eTable·eFigure·eAppendix).
 #  인용 = [@key] 또는 [@web:...]. 단독 저자 → 1인칭 금지. 결과 절에 해석 금지. 제목 쌍점 금지, 시리즈 제목 틀 반복 금지.
-#  ★공변량은 "폐렴 사망 역학 문헌에 근거해 고른 세트" — "pre-specified/before any model was fitted" 문구 금지.
 #  ★역방향(인플루엔자 예방접종률): 주모형 그대로 + 사후 검정(88r)은 결과를 본 뒤 추가했음을 Methods에 명시, 해석은 Discussion.
-#  ★구조 민감도 우선: 네 연관 모두 KH II·IV·시도×연도에서 1 포함 → 결과에 그대로, 주장 금지.
 from numbers_pneu import load, ROB, REV, RS
 import os, pandas as pd
 N = load()
@@ -26,20 +22,19 @@ KH = ("KH_typeI", "KH_typeII", "KH_typeIII", "KH_typeIV")
 FLU, SMK, ALC, MDM, CHEW = "influenza_vaccination_rate", "current_smoking_rate", "high_risk_drinking_rate", "screening_suspected_diabetes_share", "chewing_discomfort_rate_65plus"
 WALK, MPA, FAC = "walking_practice_rate", "moderate_pa_rate", "public_sports_facilities_per_100k"
 OLD, BLS, LTC, EMS, FAC_LAND = "older_single_household_share", "basic_livelihood_rate", "ltc_hospitals_per_100k_65", "em_specialists_per_100k", "factory_land_share"
-TITLE = "Does late-life pneumonia mortality remain higher outside Korea's capital region once district care and frailty markers are accounted for?"
-OLD_TITLES = ()
-assert TITLE not in OLD_TITLES and ":" not in TITLE and "2011" not in TITLE and "229" not in TITLE and "standardi" not in TITLE.lower() and len(TITLE.split()) <= 20
+TITLE = "Against the global decline, late-life pneumonia mortality in Korea rose by 63% after age standardization"
+assert ":" not in TITLE and "229" not in TITLE and len(TITLE.split()) <= 20 and not TITLE.startswith(("Do ", "Why", "Persistent", "Age-", "District", "Where"))
 KEYWORDS = "Influenza vaccination; Living alone; Oldest old; Spatial epidemiology; Death certification"
 assert 3 <= len(KEYWORDS.split(";")) <= 5 and not any(w.lower() in TITLE.lower() for k in KEYWORDS.split(";") for w in k.split()) and not any(w in KEYWORDS.lower().split() for w in ("and", "of"))
 _LK = pd.read_csv(os.path.join(RS, "S1_likelihood.csv")); _LK = _LK[_LK.set == "REF_forced_only"].set_index("family").WAIC
 _FAM = pd.read_csv(os.path.join(RS, "S3_main_fit.csv")).family.iloc[0]
 assert _FAM == "nbinomial" and _LK["nbinomial"] < _LK["poisson"] and abs(_LK["nbinomial"] - N["waic_forced"]) < 0.5
-N["waic_forced"] = float(_LK["nbinomial"])   # 11/16: S2 집합 비교 재적합(HM_best)과 S1 가능도 적합의 INLA 수치 차이 0.3 → 보고 값은 S1 가능도 적합(가능도 선택 근거와 같은 적합)으로 통일
+N["waic_forced"] = float(_LK["nbinomial"])
 NHYP = N["n_hyp"]; EXP_CHANCE = 0.05 * NHYP; assert NHYP == 13
 SUP = {"methods": ("appendix", 1), "covariates": ("table", 1), "datacheck": ("table", 2), "specs": ("table", 3), "reverse": ("table", 4), "persistence": ("figure", 1), "regions": ("table", 5), "strobe": ("appendix", 2)}
-def sup(k, short=False):   # JGMS(AMA): 보충 = Supplement 단일 PDF, eMethods·eTable n·eFigure n·eAppendix, 본문은 "eTable 1 in the Supplement"
-    kind, n = SUP[k]; lab = {"appendix": ("eMethods" if n == 1 else "eAppendix"), "table": f"eTable {n}", "figure": f"eFigure {n}"}[kind]
-    return lab if short else f"{lab} in the Supplement"
+def sup(k, short=False):
+    kind, n = SUP[k]; lab = {"appendix": ("Supplemental Methods" if n == 1 else "Supplemental Appendix"), "table": f"Table S{n}", "figure": f"Figure S{n}"}[kind]
+    return lab if short else f"{lab} in the Supplemental Material"
 WN = ("W1_2011-15", "W2_2016-19", "W3_2020-24"); WY = ("2011-2015", "2016-2019", "2020-2024")
 _W = pd.read_csv(os.path.join(RS, "S4_window_IRR.csv")).set_index(["cov", "window"])
 def wt(v, w): r = _W.loc[(v, w)]; return (r.IRR, r.lo, r.hi, bool(r.cred))
@@ -63,7 +58,7 @@ METHODS = [
 ("Checks added after results were seen",
  f"Influenza vaccination was credible in the direction opposite to that expected. The principal model was kept, and post hoc checks fitted it with the forced controls alone and removed characteristics on the care and frailty, behavioral, and access pathways ({sup('reverse')})."),
 ("Ethics and reporting",
- f"The study used only published aggregate statistics. The Institutional Review Board of Hongik University approved the study (7002340-202511-HR-012, November 4, 2025) and its continuing review (7002340-202611-HR-040, November 3, 2026) and waived informed consent because no individual-level data were used. The study conforms to the principles of the Declaration of Helsinki and follows the STROBE statement [@vonelm2007strengthening] ({sup('strobe')}). Claude (Anthropic) and ChatGPT (OpenAI) were used only for translation and English-language editing of the manuscript; the author reviewed and edited all output and takes full responsibility for the content."),
+ f"The study used only published aggregate statistics. The institutional review board of the author's institution approved the study and its continuing review (details on the title page) and waived informed consent because no individual-level data were used. The study conforms to the principles of the Declaration of Helsinki and follows the STROBE statement [@vonelm2007strengthening] ({sup('strobe')}). Claude (Anthropic) and ChatGPT (OpenAI) were used only for translation and English-language editing of the manuscript; the author reviewed and edited all output and takes full responsibility for the content."),
 ]
 
 _ME = N["moran_eb"]; _WT = N["win_hot_type"]; _wsh = lambda w: _WT[w]["county"] / sum(_WT[w].values())
@@ -86,7 +81,7 @@ assert N["n_cred_hyp"] == 4 and set(ROB) == {FLU, ALC, OLD, LTC} and N["waic_mai
 assert {v for v in H if M[v]["cred"]} == {FLU, ALC, OLD, LTC} and all(M[v]["IRR"] > 1 for v in ROB)
 assert N["negctl"]["fires_per_10000"]["cred"] and not N["negctl"]["hit_and_run_rate"]["cred"] and not N["negctl"]["traffic_culture_index"]["cred"]
 assert all(S43("KH_typeI", v)[3] for v in ROB) and not any(S43("KH_typeII", v)[3] or S43("KH_typeIV", v)[3] or S41("C4_sido_year_iid", v)[3] for v in ROB)
-assert not any(S43("KH_typeIII", v)[3] for v in (OLD, FLU, ALC, LTC)) and S43(BEST, BLS)[3] and S43(BEST, BLS)[0] > 1   # 11/16 정정 후: 독거 KH III credible 소실
+assert not any(S43("KH_typeIII", v)[3] for v in (OLD, FLU, ALC, LTC)) and S43(BEST, BLS)[3] and S43(BEST, BLS)[0] > 1
 assert sorted(v for v in H if S43(BEST, v)[3]) == [BLS] and sorted(v for v in H if S43("KH_typeII", v)[3]) == []
 assert all(S41("C1_poisson_lognormal", v)[3] for v in ROB) and all(S45("Z1_illdefined", v)[3] and S45("Z4_outside_care", v)[3] for v in ROB)
 assert BW(OLD, "between")[3] and not BW(OLD, "within")[3] and BW(ALC, "between")[3] and not BW(ALC, "within")[3] and BW(LTC, "within")[3] and not BW(LTC, "between")[3]

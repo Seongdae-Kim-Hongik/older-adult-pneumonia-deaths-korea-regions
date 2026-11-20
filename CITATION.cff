@@ -1,13 +1,13 @@
 cff-version: 1.2.0
 message: "If you use this code, please cite it as below."
-title: "Analysis code for Does late-life pneumonia mortality remain higher outside Korea's capital region once district care and frailty markers are accounted for?"
+title: "Analysis code for: Against the global decline, late-life pneumonia mortality in Korea rose by 63% after age standardization"
 authors:
   - family-names: Kim
     given-names: Seongdae
     affiliation: Hongik University
     orcid: "https://orcid.org/0000-0002-1525-0091"
-version: "1.0.0"
-date-released: 2026-11-20
+version: "1.1.0"
+date-released: 2026-11-21
 license: MIT
 repository-code: "https://github.com/Seongdae-Kim-Hongik/older-adult-pneumonia-deaths-korea-regions"
-doi: "10.5281/zenodo.24393503"
+doi: "10.5281/zenodo.24408662"
