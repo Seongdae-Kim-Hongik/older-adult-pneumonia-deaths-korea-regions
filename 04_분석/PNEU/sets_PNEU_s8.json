@@ -1,0 +1,174 @@
+{
+ "tag": "PNEU",
+ "outcome_column": "mort__폐렴_deaths",
+ "outcome_label_en": "Pneumonia deaths (J12-J18, Statistics Korea cause-of-death statistics, annual, place of residence)",
+ "disease_en": "Pneumonia mortality",
+ "disease_ko": "폐렴 사망",
+ "forced": [
+  "eloc__DT_1YL20421E__1인당도시지역면적현황__도시지역인구",
+  "eloc__DT_1YL20981__인구천명당의료기관종사의사수＜br＞(A÷B×1000)",
+  "eloc__DT_1YL20701__남녀성비＜br＞(A÷B×100)",
+  "eloc__DT_1YL20891__재정자주도(세입과목개편전)",
+  "ext__pop80_share"
+ ],
+ "negative_controls": [
+  "eloc__DT_1YL13901__뺑소니교통사고율＜br＞(A÷B×100)",
+  "eloc__DT_1YL20331__지수__계",
+  "eloc__DT_1YL21081__주민만명당화재발생건수＜br＞(A÷B×10000)"
+ ],
+ "offset_E_column": "E_std_c10",
+ "offset_E_file": "PNEU_Estd2.csv",
+ "offset_E_label": "age-standardised E, 10 bands to 75+ (E_std_c10)",
+ "graph": "593-edge contact graph (BRCA 2026-11-04 graph_audit), ST_GRAPH=04_분석/PNEU/graph_593.graph",
+ "population_override": [
+  {
+   "year": 2023,
+   "fbd_region": "경상남도창원시",
+   "population": 1009038,
+   "source": "KOSIS DT_1YL20651E 2023 통합창원시 계; FBD_DATA_ZIP/2023.csv 창원 블록이 2022값 복사(유방암 11/4 population_final_audit)"
+  }
+ ],
+ "sensitivity_only_extra": [
+  "ext__outside_care_share",
+  "ext__ill_defined_share"
+ ],
+ "sets": {
+  "S1_narrative_full": [
+   "kchs__DT_INFLUENZA__SR",
+   "kchs__DT_H_SM__SR",
+   "kchs__DT_117075_H_DR_HIGH_WH__SR",
+   "chk__질환의심_고혈압당뇨_당뇨병_수검자대비비율",
+   "kchs__DT_H_OR_INCONV__SR",
+   "kchs__DT_H_EX_WALK__SR",
+   "kchs__DT_H_EX_PHY__SR",
+   "fac__total",
+   "eloc__DT_1YL12701__독거노인가구비율＜br＞(A÷B×100)",
+   "ext__basic_livelihood_rate",
+   "ext__ltc_hospitals_per100k_65",
+   "ext__em_specialists_per100k",
+   "ext__factory_land_share"
+  ],
+  "S2_host_prevention": [
+   "kchs__DT_INFLUENZA__SR",
+   "kchs__DT_H_SM__SR",
+   "kchs__DT_117075_H_DR_HIGH_WH__SR",
+   "chk__질환의심_고혈압당뇨_당뇨병_수검자대비비율",
+   "kchs__DT_H_OR_INCONV__SR"
+  ],
+  "S3_activity": [
+   "kchs__DT_H_EX_WALK__SR",
+   "kchs__DT_H_EX_PHY__SR",
+   "fac__total"
+  ],
+  "S4_structural_care": [
+   "eloc__DT_1YL12701__독거노인가구비율＜br＞(A÷B×100)",
+   "ext__basic_livelihood_rate",
+   "ext__ltc_hospitals_per100k_65",
+   "ext__em_specialists_per100k",
+   "ext__factory_land_share"
+  ],
+  "S5_core": [
+   "kchs__DT_INFLUENZA__SR",
+   "kchs__DT_H_SM__SR",
+   "kchs__DT_H_OR_INCONV__SR",
+   "kchs__DT_H_EX_WALK__SR",
+   "ext__basic_livelihood_rate",
+   "ext__ltc_hospitals_per100k_65"
+  ]
+ },
+ "transform": {
+  "eloc__DT_1YL20421E__1인당도시지역면적현황__도시지역인구": "share_of_pop(도시지역인구÷population(마스터))",
+  "eloc__DT_1YL20981__인구천명당의료기관종사의사수＜br＞(A÷B×1000)": "none",
+  "eloc__DT_1YL20701__남녀성비＜br＞(A÷B×100)": "none",
+  "eloc__DT_1YL20891__재정자주도(세입과목개편전)": "none",
+  "ext__pop80_share": "none",
+  "eloc__DT_1YL13901__뺑소니교통사고율＜br＞(A÷B×100)": "none",
+  "eloc__DT_1YL20331__지수__계": "none",
+  "eloc__DT_1YL21081__주민만명당화재발생건수＜br＞(A÷B×10000)": "none",
+  "kchs__DT_INFLUENZA__SR": "none",
+  "kchs__DT_H_SM__SR": "none",
+  "kchs__DT_117075_H_DR_HIGH_WH__SR": "none",
+  "chk__질환의심_고혈압당뇨_당뇨병_수검자대비비율": "none",
+  "kchs__DT_H_OR_INCONV__SR": "none",
+  "kchs__DT_H_EX_WALK__SR": "none",
+  "kchs__DT_H_EX_PHY__SR": "none",
+  "fac__total": "per100k",
+  "eloc__DT_1YL12701__독거노인가구비율＜br＞(A÷B×100)": "none",
+  "ext__basic_livelihood_rate": "none",
+  "ext__ltc_hospitals_per100k_65": "none",
+  "ext__em_specialists_per100k": "none",
+  "ext__factory_land_share": "none",
+  "ext__outside_care_share": "none",
+  "ext__ill_defined_share": "none"
+ },
+ "expected_direction": {
+  "kchs__DT_INFLUENZA__SR": "- (인플루엔자 예방접종: 인플루엔자 후 이차 세균성 폐렴·노인 폐렴 입원·사망 감소)",
+  "kchs__DT_H_SM__SR": "+ (현재흡연: 지역사회획득 폐렴 위험·폐구균 침습 질환)",
+  "kchs__DT_117075_H_DR_HIGH_WH__SR": "+ (고위험음주: 흡인·면역 저하, 폐렴 위험·사망)",
+  "chk__질환의심_고혈압당뇨_당뇨병_수검자대비비율": "+ (측정 공복혈당 기반 당뇨 의심: 폐렴 입원·사망 위험 동반질환)",
+  "kchs__DT_H_OR_INCONV__SR": "+ (65세 이상 저작불편: 구강 건강·연하 기능 저하 → 흡인성 폐렴)",
+  "kchs__DT_H_EX_WALK__SR": "- (걷기 실천: 신체활동·허약 예방)",
+  "kchs__DT_H_EX_PHY__SR": "- (중강도 신체활동: 폐렴 위험·사망 감소, 근감소 예방)",
+  "fac__total": "- (공공체육시설 밀도: 신체활동 환경)",
+  "eloc__DT_1YL12701__독거노인가구비율＜br＞(A÷B×100)": "+ (독거노인: 사회적 고립·늦은 진료·돌봄 부재)",
+  "ext__basic_livelihood_rate": "+ (박탈: 영양·주거·의료 이용)",
+  "ext__ltc_hospitals_per100k_65": "+ (요양병원 밀도: 시설 거주 허약 노인의 흡인·의료관련 폐렴, 시설 사망의 사인 기록)",
+  "ext__em_specialists_per100k": "- (응급의학 전문의: 중증 폐렴·패혈증 급성기 진료 접근)",
+  "ext__factory_land_share": "+ (공장용지 비율: 산업 대기오염 노출 대리)"
+ },
+ "evidence": {
+  "kchs__DT_INFLUENZA__SR": "nichol2007effectiveness; jackson2006evidence; simonsen2005impact",
+  "kchs__DT_H_SM__SR": "baskaran2019effect; nuorti2000cigarette",
+  "kchs__DT_117075_H_DR_HIGH_WH__SR": "simou2018alcohol; samokhvalov2010alcohol",
+  "chk__질환의심_고혈압당뇨_당뇨병_수검자대비비율": "kornum2008diabetes; kim2019diabetes",
+  "kchs__DT_H_OR_INCONV__SR": "vandermaarelwierink2011risk; son2020association; suma2018tooth",
+  "kchs__DT_H_EX_WALK__SR": "kunutsor2022physical; ukawa2019associations",
+  "kchs__DT_H_EX_PHY__SR": "kunutsor2022physical; webber2023leisure",
+  "fac__total": "kunutsor2022physical (indirect: environment for activity)",
+  "eloc__DT_1YL12701__독거노인가구비율＜br＞(A÷B×100)": "kim2026living",
+  "ext__basic_livelihood_rate": "lee2023low; kim2019spatial; millett2013incidence",
+  "ext__ltc_hospitals_per100k_65": "kim2026long; yun2026patient; mieno2016accuracy",
+  "ext__em_specialists_per100k": "lee2024effect",
+  "ext__factory_land_share": "neupane2010long; leogrande2019industrial"
+ },
+ "rules": {
+  "likelihood": "forced-only 모형 WAIC 낮은 쪽(Poisson/NB)",
+  "set_choice": "WAIC 최소, 4 이내면 변수 적은 세트",
+  "credible": "95% CrI 1 제외",
+  "vif_drop": 10,
+  "multiverse_specs": 200,
+  "main_model_note": "Principal model = S1_narrative_full (13 district characteristics + 5 forced controls). VIF>10 retained and reported."
+ },
+ "note": "Covariates selected from the epidemiology of pneumonia death in older adults: prevention (influenza vaccination), host susceptibility (smoking, high-risk drinking, measured suspected diabetes, chewing difficulty aged 65+), physical activity (walking, moderate activity, public sports facilities), social and care conditions (older adults living alone, basic livelihood recipients, long-term care hospitals, emergency medicine specialists) and environment (factory land share as an industrial air pollution proxy). Not available as annual district series: pneumococcal vaccination, PM2.5, nursing home capacity. Sensitivity-only: ill-defined cause share (R00-R99) and out-of-district outpatient share.",
+ "extra_columns": {
+  "ext__pop80_share": [
+   "PNEU_Estd2.csv",
+   "pop80_share_raw"
+  ],
+  "ext__basic_livelihood_rate": [
+   "EXT_canonical_pool_PNEU_261108.csv",
+   "basic_livelihood_rate"
+  ],
+  "ext__ltc_hospitals_per100k_65": [
+   "EXT_canonical_pool_PNEU_261108.csv",
+   "ltc_hospitals_per100k_65"
+  ],
+  "ext__em_specialists_per100k": [
+   "EXT_canonical_pool_PNEU_261108.csv",
+   "em_specialists_per100k"
+  ],
+  "ext__factory_land_share": [
+   "EXT_canonical_pool_PNEU_261108.csv",
+   "factory_land_share"
+  ],
+  "ext__ill_defined_share": [
+   "EXT_canonical_pool_PNEU_261108.csv",
+   "ill_defined_share"
+  ],
+  "ext__outside_care_share": [
+   "EXT_canonical_pool_261106.csv",
+   "outside_care_share"
+  ]
+ },
+ "pool_note": "Additional indicators from the harmonized district panel were reviewed; those without a mechanism for pneumonia death were not used."
+}

@@ -1,0 +1,840 @@
+{
+ "almirall2017risk": {
+  "type": "journal",
+  "authors": [
+   "Almirall J",
+   "Serra-Prat M",
+   "Bolíbar I",
+   "Balasso V"
+  ],
+  "title": "Risk Factors for Community-Acquired Pneumonia in Adults: a Systematic Review of Observational Studies",
+  "journal": "Respiration",
+  "year": 2017,
+  "vol": "94",
+  "issue": "3",
+  "pages": "299-311",
+  "doi": "10.1159/000479089",
+  "pmid": "28738364",
+  "verified": "PubMed esummary 2026-11-16"
+ },
+ "baskaran2019effect": {
+  "type": "journal",
+  "authors": [
+   "Baskaran V",
+   "Murray RL",
+   "Hunter A",
+   "Lim WS",
+   "McKeever TM"
+  ],
+  "title": "Effect of tobacco smoking on the risk of developing community acquired pneumonia: a systematic review and meta-analysis",
+  "journal": "PLoS One",
+  "year": 2019,
+  "vol": "14",
+  "issue": "7",
+  "pages": "e0220204",
+  "doi": "10.1371/journal.pone.0220204",
+  "pmid": "31318967",
+  "verified": "PubMed esummary 2026-11-16"
+ },
+ "cabre2010prevalence": {
+  "type": "journal",
+  "authors": [
+   "Cabre M",
+   "Serra-Prat M",
+   "Palomera E",
+   "Almirall J",
+   "Pallares R",
+   "Clavé P"
+  ],
+  "title": "Prevalence and prognostic implications of dysphagia in elderly patients with pneumonia",
+  "journal": "Age Ageing",
+  "year": 2010,
+  "vol": "39",
+  "issue": "1",
+  "pages": "39-45",
+  "doi": "10.1093/ageing/afp100",
+  "pmid": "19561160",
+  "verified": "PubMed esummary 2026-11-16"
+ },
+ "dupont2022spatial": {
+  "type": "journal",
+  "authors": [
+   "Dupont E",
+   "Wood SN",
+   "Augustin NH"
+  ],
+  "title": "Spatial+: a novel approach to spatial confounding",
+  "journal": "Biometrics",
+  "year": 2022,
+  "vol": "78",
+  "issue": "4",
+  "pages": "1279-1290",
+  "doi": "10.1111/biom.13656",
+  "pmid": "35258102",
+  "verified": "PubMed esummary 2026-11-16"
+ },
+ "ellingsen2022garbage": {
+  "type": "journal",
+  "authors": [
+   "Ellingsen CL",
+   "Alfsen GC",
+   "Ebbing M",
+   "Pedersen AG",
+   "Sulo G",
+   "Vollset SE",
+   "Braut GS"
+  ],
+  "title": "Garbage codes in the Norwegian Cause of Death Registry 1996-2019",
+  "journal": "BMC Public Health",
+  "year": 2022,
+  "vol": "22",
+  "issue": "1",
+  "pages": "1301",
+  "doi": "10.1186/s12889-022-13693-w",
+  "pmid": "35794568",
+  "verified": "PubMed esummary 2026-11-16"
+ },
+ "gbd2018estimates": {
+  "type": "journal",
+  "authors": [
+   "GBD 2016 Lower Respiratory Infections Collaborators"
+  ],
+  "title": "Estimates of the global, regional, and national morbidity, mortality, and aetiologies of lower respiratory infections in 195 countries, 1990-2016: a systematic analysis for the Global Burden of Disease Study 2016",
+  "journal": "Lancet Infect Dis",
+  "year": 2018,
+  "vol": "18",
+  "issue": "11",
+  "pages": "1191-1210",
+  "doi": "10.1016/S1473-3099(18)30310-4",
+  "pmid": "30243584",
+  "verified": "PubMed esummary 2026-11-16"
+ },
+ "gbd2024global": {
+  "type": "journal",
+  "authors": [
+   "GBD 2021 Lower Respiratory Infections and Antimicrobial Resistance Collaborators"
+  ],
+  "title": "Global, regional, and national incidence and mortality burden of non-COVID-19 lower respiratory infections and aetiologies, 1990-2021: a systematic analysis from the Global Burden of Disease Study 2021",
+  "journal": "Lancet Infect Dis",
+  "year": 2024,
+  "vol": "24",
+  "issue": "9",
+  "pages": "974-1002",
+  "doi": "10.1016/S1473-3099(24)00176-2",
+  "pmid": "38636536",
+  "verified": "PubMed esummary 2026-11-16"
+ },
+ "holland2025demographic": {
+  "type": "journal",
+  "authors": [
+   "Holland E",
+   "Jabbar ABA",
+   "Asghar MS",
+   "Asghar N",
+   "Mistry K",
+   "Mirza M",
+   "Tauseef A"
+  ],
+  "title": "Demographic and regional trends of pneumonia mortality in the United States, 1999 to 2022",
+  "journal": "Sci Rep",
+  "year": 2025,
+  "vol": "15",
+  "issue": "1",
+  "pages": "10103",
+  "doi": "10.1038/s41598-025-94715-6",
+  "pmid": "40128337",
+  "verified": "PubMed esummary 2026-11-16"
+ },
+ "hwang2020association": {
+  "type": "journal",
+  "authors": [
+   "Hwang J",
+   "Kwon J",
+   "Yi H",
+   "Bae HJ",
+   "Jang M",
+   "Kim N"
+  ],
+  "title": "Association between long-term exposure to air pollutants and cardiopulmonary mortality rates in South Korea",
+  "journal": "BMC Public Health",
+  "year": 2020,
+  "vol": "20",
+  "issue": "1",
+  "pages": "1402",
+  "doi": "10.1186/s12889-020-09521-8",
+  "pmid": "32928163",
+  "verified": "PubMed esummary 2026-11-16"
+ },
+ "inskip1983methods": {
+  "type": "journal",
+  "authors": [
+   "Inskip H",
+   "Beral V",
+   "Fraser P",
+   "Haskey J"
+  ],
+  "title": "Methods for age-adjustment of rates",
+  "journal": "Stat Med",
+  "year": 1983,
+  "vol": "2",
+  "issue": "4",
+  "pages": "455-466",
+  "doi": "10.1002/sim.4780020404",
+  "pmid": "6672943",
+  "verified": "PubMed esummary 2026-11-16"
+ },
+ "iwaisaito2021frailty": {
+  "type": "journal",
+  "authors": [
+   "Iwai-Saito K",
+   "Shobugawa Y",
+   "Aida J",
+   "Kondo K"
+  ],
+  "title": "Frailty is associated with susceptibility and severity of pneumonia in older adults (A JAGES multilevel cross-sectional study)",
+  "journal": "Sci Rep",
+  "year": 2021,
+  "vol": "11",
+  "issue": "1",
+  "pages": "7966",
+  "doi": "10.1038/s41598-021-86854-3",
+  "pmid": "33846416",
+  "verified": "PubMed esummary 2026-11-16"
+ },
+ "jackson2006evidence": {
+  "type": "journal",
+  "authors": [
+   "Jackson LA",
+   "Jackson ML",
+   "Nelson JC",
+   "Neuzil KM",
+   "Weiss NS"
+  ],
+  "title": "Evidence of bias in estimates of influenza vaccine effectiveness in seniors",
+  "journal": "Int J Epidemiol",
+  "year": 2006,
+  "vol": "35",
+  "issue": "2",
+  "pages": "337-344",
+  "doi": "10.1093/ije/dyi274",
+  "pmid": "16368725",
+  "verified": "PubMed esummary 2026-11-16"
+ },
+ "jackson2008influenza": {
+  "type": "journal",
+  "authors": [
+   "Jackson ML",
+   "Nelson JC",
+   "Weiss NS",
+   "Neuzil KM",
+   "Barlow W",
+   "Jackson LA"
+  ],
+  "title": "Influenza vaccination and risk of community-acquired pneumonia in immunocompetent elderly people: a population-based, nested case-control study",
+  "journal": "Lancet",
+  "year": 2008,
+  "vol": "372",
+  "issue": "9636",
+  "pages": "398-405",
+  "doi": "10.1016/S0140-6736(08)61160-5",
+  "pmid": "18675690",
+  "verified": "PubMed esummary 2026-11-16"
+ },
+ "kang2015korea": {
+  "type": "journal",
+  "authors": [
+   "Kang YW",
+   "Ko YS",
+   "Kim YJ",
+   "Sung KM",
+   "Kim HJ",
+   "Choi HY",
+   "Sung C",
+   "Jeong E"
+  ],
+  "title": "Korea Community Health Survey data profiles",
+  "journal": "Osong Public Health Res Perspect",
+  "year": 2015,
+  "vol": "6",
+  "issue": "3",
+  "pages": "211-217",
+  "doi": "10.1016/j.phrp.2015.05.003",
+  "pmid": "26430619",
+  "verified": "PubMed esummary 2026-11-16"
+ },
+ "kim2019spatial": {
+  "type": "journal",
+  "authors": [
+   "Kim AM",
+   "Kang S",
+   "Park JH",
+   "Yoon TH",
+   "Kim Y"
+  ],
+  "title": "A spatial analysis of geographic variation and factors associated with hospitalization for bacterial pneumonia in Korea",
+  "journal": "BMC Pulm Med",
+  "year": 2019,
+  "vol": "19",
+  "issue": "1",
+  "pages": "45",
+  "doi": "10.1186/s12890-019-0798-6",
+  "pmid": "30786908",
+  "verified": "PubMed esummary 2026-11-16"
+ },
+ "kim2026living": {
+  "type": "journal",
+  "authors": [
+   "Kim KH",
+   "Jung D",
+   "Lee SY",
+   "Yoo SH",
+   "Hwang IY",
+   "Cho W",
+   "Jeong S",
+   "Kim MS",
+   "Cho B"
+  ],
+  "title": "Living alone, socioeconomic status, and mortality among older adults: a population-based cohort study",
+  "journal": "BMC Geriatr",
+  "year": 2026,
+  "vol": "26",
+  "issue": "1",
+  "pages": "",
+  "doi": "10.1186/s12877-026-07946-1",
+  "pmid": "42958090",
+  "verified": "PubMed esummary 2026-11-16"
+ },
+ "kim2026long": {
+  "type": "journal",
+  "authors": [
+   "Kim H",
+   "Shin S"
+  ],
+  "title": "Long-term care hospitals as end-of-life care settings in South Korea: a nationwide analysis of utilization patterns and clinical trajectories",
+  "journal": "PLoS One",
+  "year": 2026,
+  "vol": "21",
+  "issue": "7",
+  "pages": "e0354271",
+  "doi": "10.1371/journal.pone.0354271",
+  "pmid": "42497224",
+  "verified": "PubMed esummary 2026-11-16"
+ },
+ "knorrheld2000bayesian": {
+  "type": "journal",
+  "authors": [
+   "Knorr-Held L"
+  ],
+  "title": "Bayesian modelling of inseparable space-time variation in disease risk",
+  "journal": "Stat Med",
+  "year": 2000,
+  "vol": "19",
+  "issue": "17-18",
+  "pages": "2555-2567",
+  "doi": "10.1002/1097-0258(20000915/30)19:17/18<2555::aid-sim587>3.0.co;2-#",
+  "pmid": "10960871",
+  "verified": "PubMed esummary 2026-11-16"
+ },
+ "komiya2013physicians": {
+  "type": "journal",
+  "authors": [
+   "Komiya K",
+   "Ishii H",
+   "Kushima H",
+   "Sato S",
+   "Kimura H",
+   "Yasuda T",
+   "Okabe E",
+   "Tokimatsu I",
+   "Yamamoto H",
+   "Kadota J"
+  ],
+  "title": "Physicians' attitudes toward the definition of \"death from age-related physical debility\" in deceased elderly with aspiration pneumonia",
+  "journal": "Geriatr Gerontol Int",
+  "year": 2013,
+  "vol": "13",
+  "issue": "3",
+  "pages": "586-590",
+  "doi": "10.1111/j.1447-0594.2012.00941.x",
+  "pmid": "22994861",
+  "verified": "PubMed esummary 2026-11-16"
+ },
+ "kornum2008diabetes": {
+  "type": "journal",
+  "authors": [
+   "Kornum JB",
+   "Thomsen RW",
+   "Riis A",
+   "Lervang HH",
+   "Schønheyder HC",
+   "Sørensen HT"
+  ],
+  "title": "Diabetes, glycemic control, and risk of hospitalization with pneumonia: a population-based case-control study",
+  "journal": "Diabetes Care",
+  "year": 2008,
+  "vol": "31",
+  "issue": "8",
+  "pages": "1541-1545",
+  "doi": "10.2337/dc08-0138",
+  "pmid": "18487479",
+  "verified": "PubMed esummary 2026-11-16"
+ },
+ "kunutsor2022physical": {
+  "type": "journal",
+  "authors": [
+   "Kunutsor SK",
+   "Seidu S",
+   "Laukkanen JA"
+  ],
+  "title": "Physical activity reduces the risk of pneumonia: systematic review and meta-analysis of 10 prospective studies involving 1,044,492 participants",
+  "journal": "Geroscience",
+  "year": 2022,
+  "vol": "44",
+  "issue": "1",
+  "pages": "519-532",
+  "doi": "10.1007/s11357-021-00491-2",
+  "pmid": "34822066",
+  "verified": "PubMed esummary 2026-11-16"
+ },
+ "lee2021characteristics": {
+  "type": "journal",
+  "authors": [
+   "Lee K",
+   "Hong K",
+   "Kang S",
+   "Hwang J"
+  ],
+  "title": "Characteristics and Epidemiology of Discharged Pneumonia Patients in South Korea Using the Korean National Hospital Discharge In-Depth Injury Survey Data from 2006 to 2017",
+  "journal": "Infect Dis Rep",
+  "year": 2021,
+  "vol": "13",
+  "issue": "3",
+  "pages": "730-741",
+  "doi": "10.3390/idr13030068",
+  "pmid": "34449656",
+  "verified": "PubMed esummary 2026-11-16"
+ },
+ "lee2023low": {
+  "type": "journal",
+  "authors": [
+   "Lee YB",
+   "Park SH",
+   "Lee KN",
+   "Kim B",
+   "Kwon SY",
+   "Park J",
+   "Kim G",
+   "Jin SM",
+   "Hur KY",
+   "Han K",
+   "Kim JH"
+  ],
+  "title": "Low Household Income Status and Death from Pneumonia in People with Type 2 Diabetes Mellitus: a Nationwide Study",
+  "journal": "Diabetes Metab J",
+  "year": 2023,
+  "vol": "47",
+  "issue": "5",
+  "pages": "682-692",
+  "doi": "10.4093/dmj.2022.0184",
+  "pmid": "37349081",
+  "verified": "PubMed esummary 2026-11-16"
+ },
+ "lee2026regional": {
+  "type": "journal",
+  "authors": [
+   "Lee K",
+   "Kawaguchi H"
+  ],
+  "title": "Regional Disparities in Domiciliary Dental-Care Utilization and Their Association with Pneumonia Mortality in Japan: an Ecological Study Using National Open Data",
+  "journal": "JMA J",
+  "year": 2026,
+  "vol": "9",
+  "issue": "4",
+  "pages": "933-941",
+  "doi": "10.31662/jmaj.2025-0561",
+  "pmid": "42577067",
+  "verified": "PubMed esummary 2026-11-16"
+ },
+ "mieno2016accuracy": {
+  "type": "journal",
+  "authors": [
+   "Mieno MN",
+   "Tanaka N",
+   "Arai T",
+   "Kawahara T",
+   "Kuchiba A",
+   "Ishikawa S",
+   "Sawabe M"
+  ],
+  "title": "Accuracy of Death Certificates and Assessment of Factors for Misclassification of Underlying Cause of Death",
+  "journal": "J Epidemiol",
+  "year": 2016,
+  "vol": "26",
+  "issue": "4",
+  "pages": "191-198",
+  "doi": "10.2188/jea.JE20150010",
+  "pmid": "26639750",
+  "verified": "PubMed esummary 2026-11-16"
+ },
+ "millett2013incidence": {
+  "type": "journal",
+  "authors": [
+   "Millett ER",
+   "Quint JK",
+   "Smeeth L",
+   "Daniel RM",
+   "Thomas SL"
+  ],
+  "title": "Incidence of community-acquired lower respiratory tract infections and pneumonia among older adults in the United Kingdom: a population-based study",
+  "journal": "PLoS One",
+  "year": 2013,
+  "vol": "8",
+  "issue": "9",
+  "pages": "e75131",
+  "doi": "10.1371/journal.pone.0075131",
+  "pmid": "24040394",
+  "verified": "PubMed esummary 2026-11-16"
+ },
+ "morgenstern1995ecologic": {
+  "type": "journal",
+  "authors": [
+   "Morgenstern H"
+  ],
+  "title": "Ecologic studies in epidemiology: concepts, principles, and methods",
+  "journal": "Annu Rev Public Health",
+  "year": 1995,
+  "vol": "16",
+  "issue": "",
+  "pages": "61-81",
+  "doi": "10.1146/annurev.pu.16.050195.000425",
+  "pmid": "7639884",
+  "verified": "PubMed esummary 2026-11-16"
+ },
+ "neupane2010long": {
+  "type": "journal",
+  "authors": [
+   "Neupane B",
+   "Jerrett M",
+   "Burnett RT",
+   "Marrie T",
+   "Arain A",
+   "Loeb M"
+  ],
+  "title": "Long-term exposure to ambient air pollution and risk of hospitalization with community-acquired pneumonia in older adults",
+  "journal": "Am J Respir Crit Care Med",
+  "year": 2010,
+  "vol": "181",
+  "issue": "1",
+  "pages": "47-53",
+  "doi": "10.1164/rccm.200901-0160OC",
+  "pmid": "19797763",
+  "verified": "PubMed esummary 2026-11-16"
+ },
+ "nichol2007effectiveness": {
+  "type": "journal",
+  "authors": [
+   "Nichol KL",
+   "Nordin JD",
+   "Nelson DB",
+   "Mullooly JP",
+   "Hak E"
+  ],
+  "title": "Effectiveness of influenza vaccine in the community-dwelling elderly",
+  "journal": "N Engl J Med",
+  "year": 2007,
+  "vol": "357",
+  "issue": "14",
+  "pages": "1373-1381",
+  "doi": "10.1056/NEJMoa070844",
+  "pmid": "17914038",
+  "verified": "PubMed esummary 2026-11-16"
+ },
+ "oliveira2013ecological": {
+  "type": "journal",
+  "authors": [
+   "de Oliveira JF",
+   "Boing AF",
+   "Waldman EA",
+   "Antunes JL"
+  ],
+  "title": "Ecological study on mortality from influenza and pneumonia before and after influenza vaccination in the Northeast and South of Brazil",
+  "journal": "Cad Saude Publica",
+  "year": 2013,
+  "vol": "29",
+  "issue": "12",
+  "pages": "2535-2545",
+  "doi": "10.1590/0102-311x00028413",
+  "pmid": "24356698",
+  "verified": "PubMed esummary 2026-11-16"
+ },
+ "piantadosi1988ecological": {
+  "type": "journal",
+  "authors": [
+   "Piantadosi S",
+   "Byar DP",
+   "Green SB"
+  ],
+  "title": "The ecological fallacy",
+  "journal": "Am J Epidemiol",
+  "year": 1988,
+  "vol": "127",
+  "issue": "5",
+  "pages": "893-904",
+  "doi": "10.1093/oxfordjournals.aje.a114892",
+  "pmid": "3282433",
+  "verified": "PubMed esummary 2026-11-16"
+ },
+ "riebler2016intuitive": {
+  "type": "journal",
+  "authors": [
+   "Riebler A",
+   "Sørbye SH",
+   "Simpson D",
+   "Rue H"
+  ],
+  "title": "An intuitive Bayesian spatial model for disease mapping that accounts for scaling",
+  "journal": "Stat Methods Med Res",
+  "year": 2016,
+  "vol": "25",
+  "issue": "4",
+  "pages": "1145-1165",
+  "doi": "10.1177/0962280216660421",
+  "pmid": "27566770",
+  "verified": "PubMed esummary 2026-11-16"
+ },
+ "simonsen2005impact": {
+  "type": "journal",
+  "authors": [
+   "Simonsen L",
+   "Reichert TA",
+   "Viboud C",
+   "Blackwelder WC",
+   "Taylor RJ",
+   "Miller MA"
+  ],
+  "title": "Impact of influenza vaccination on seasonal mortality in the US elderly population",
+  "journal": "Arch Intern Med",
+  "year": 2005,
+  "vol": "165",
+  "issue": "3",
+  "pages": "265-272",
+  "doi": "10.1001/archinte.165.3.265",
+  "pmid": "15710788",
+  "verified": "PubMed esummary 2026-11-16"
+ },
+ "simonsen2007mortality": {
+  "type": "journal",
+  "authors": [
+   "Simonsen L",
+   "Taylor RJ",
+   "Viboud C",
+   "Miller MA",
+   "Jackson LA"
+  ],
+  "title": "Mortality benefits of influenza vaccination in elderly people: an ongoing controversy",
+  "journal": "Lancet Infect Dis",
+  "year": 2007,
+  "vol": "7",
+  "issue": "10",
+  "pages": "658-666",
+  "doi": "10.1016/S1473-3099(07)70236-0",
+  "pmid": "17897608",
+  "verified": "PubMed esummary 2026-11-16"
+ },
+ "simou2018alcohol": {
+  "type": "journal",
+  "authors": [
+   "Simou E",
+   "Britton J",
+   "Leonardi-Bee J"
+  ],
+  "title": "Alcohol and the risk of pneumonia: a systematic review and meta-analysis",
+  "journal": "BMJ Open",
+  "year": 2018,
+  "vol": "8",
+  "issue": "8",
+  "pages": "e022344",
+  "doi": "10.1136/bmjopen-2018-022344",
+  "pmid": "30135186",
+  "verified": "PubMed esummary 2026-11-16"
+ },
+ "song2026understanding": {
+  "type": "journal",
+  "authors": [
+   "Song JY",
+   "Cheong HJ"
+  ],
+  "title": "Understanding the low effectiveness of influenza vaccines in older adults of South Korea: an exploration of contributing factors",
+  "journal": "Vaccine",
+  "year": 2026,
+  "vol": "71",
+  "issue": "",
+  "pages": "128076",
+  "doi": "10.1016/j.vaccine.2025.128076",
+  "pmid": "41380253",
+  "verified": "PubMed esummary 2026-11-16"
+ },
+ "torres2015individuals": {
+  "type": "journal",
+  "authors": [
+   "Torres A",
+   "Blasi F",
+   "Dartois N",
+   "Akova M"
+  ],
+  "title": "Which individuals are at increased risk of pneumococcal disease and why? Impact of COPD, asthma, smoking, diabetes, and/or chronic heart disease on community-acquired pneumonia and invasive pneumococcal disease",
+  "journal": "Thorax",
+  "year": 2015,
+  "vol": "70",
+  "issue": "10",
+  "pages": "984-989",
+  "doi": "10.1136/thoraxjnl-2015-206780",
+  "pmid": "26219979",
+  "verified": "PubMed esummary 2026-11-16"
+ },
+ "vandermaarelwierink2011risk": {
+  "type": "journal",
+  "authors": [
+   "van der Maarel-Wierink CD",
+   "Vanobbergen JN",
+   "Bronkhorst EM",
+   "Schols JM",
+   "de Baat C"
+  ],
+  "title": "Risk factors for aspiration pneumonia in frail older people: a systematic literature review",
+  "journal": "J Am Med Dir Assoc",
+  "year": 2011,
+  "vol": "12",
+  "issue": "5",
+  "pages": "344-354",
+  "doi": "10.1016/j.jamda.2010.12.099",
+  "pmid": "21450240",
+  "verified": "PubMed esummary 2026-11-16"
+ },
+ "vonelm2007strengthening": {
+  "type": "journal",
+  "authors": [
+   "von Elm E",
+   "Altman DG",
+   "Egger M",
+   "Pocock SJ",
+   "Gøtzsche PC",
+   "Vandenbroucke JP"
+  ],
+  "title": "The Strengthening the Reporting of Observational Studies in Epidemiology (STROBE) statement: guidelines for reporting observational studies",
+  "journal": "Lancet",
+  "year": 2007,
+  "vol": "370",
+  "issue": "9596",
+  "pages": "1453-1457",
+  "doi": "10.1016/S0140-6736(07)61602-X",
+  "pmid": "18064739",
+  "verified": "PubMed esummary 2026-11-16"
+ },
+ "yang2024impact": {
+  "type": "journal",
+  "authors": [
+   "Yang Y",
+   "Zhong Y"
+  ],
+  "title": "Impact of frailty on pneumonia outcomes in older patients: a systematic review and meta-analysis",
+  "journal": "Eur Geriatr Med",
+  "year": 2024,
+  "vol": "15",
+  "issue": "4",
+  "pages": "881-891",
+  "doi": "10.1007/s41999-024-00974-3",
+  "pmid": "38613647",
+  "verified": "PubMed esummary 2026-11-16"
+ },
+ "yun2026patient": {
+  "type": "journal",
+  "authors": [
+   "Yun JH",
+   "Ki HK",
+   "Park J"
+  ],
+  "title": "Patient- and Facility-Level Factors Associated With Long-Term Care Facility-Acquired Pneumonia and Mortality in Korea",
+  "journal": "J Am Med Dir Assoc",
+  "year": 2026,
+  "vol": "27",
+  "issue": "12",
+  "pages": "106506",
+  "doi": "10.1016/j.jamda.2026.106506",
+  "pmid": "42966142",
+  "verified": "PubMed esummary 2026-11-16"
+ },
+ "bell2015explaining": {
+  "type": "journal",
+  "authors": [
+   "Bell A",
+   "Jones K"
+  ],
+  "title": "Explaining fixed effects: random effects modeling of time-series cross-sectional and panel data",
+  "journal": "Polit Sci Res Methods",
+  "year": 2015,
+  "vol": "3",
+  "issue": "1",
+  "pages": "133-153",
+  "doi": "10.1017/psrm.2014.7",
+  "verified": "Crossref 2026-11-16"
+ },
+ "rue2009approximate": {
+  "type": "journal",
+  "authors": [
+   "Rue H",
+   "Martino S",
+   "Chopin N"
+  ],
+  "title": "Approximate Bayesian inference for latent Gaussian models by using integrated nested Laplace approximations",
+  "journal": "J R Stat Soc Series B Stat Methodol",
+  "year": 2009,
+  "vol": "71",
+  "issue": "2",
+  "pages": "319-392",
+  "doi": "10.1111/j.1467-9868.2008.00700.x",
+  "verified": "Crossref 2026-11-16"
+ },
+ "simpson2017penalising": {
+  "type": "journal",
+  "authors": [
+   "Simpson D",
+   "Rue H",
+   "Riebler A",
+   "Martins TG",
+   "Sørbye SH"
+  ],
+  "title": "Penalising model component complexity: a principled, practical approach to constructing priors",
+  "journal": "Stat Sci",
+  "year": 2017,
+  "vol": "32",
+  "issue": "1",
+  "pages": "1-28",
+  "doi": "10.1214/16-sts576",
+  "verified": "Crossref 2026-11-16"
+ },
+ "web:kostat2026cause": {
+  "type": "web",
+  "authors": "Statistics Korea",
+  "title": "Causes of death statistics: deaths by cause (104 items), sex and administrative district (DT_1B34E13) and by cause, sex and 5-year age group (DT_1B34E01), 2011-2024. Korean Statistical Information Service",
+  "url": "https://kosis.kr",
+  "year": 2026,
+  "accessed": "6 November 2026"
+ },
+ "web:mois2026population": {
+  "type": "web",
+  "authors": "Ministry of the Interior and Safety",
+  "title": "Resident registration population by district, sex and 5-year age group, 2011-2024",
+  "url": "https://jumin.mois.go.kr",
+  "year": 2026,
+  "accessed": "20 October 2026"
+ },
+ "web:rcore2026": {
+  "type": "web",
+  "authors": "R Core Team",
+  "title": "R: a language and environment for statistical computing. Version 4.6.0. Vienna: R Foundation for Statistical Computing",
+  "url": "https://www.R-project.org/",
+  "year": 2026,
+  "accessed": "20 October 2026"
+ }
+}
